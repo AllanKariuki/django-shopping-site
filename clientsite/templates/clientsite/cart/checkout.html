@@ -1,0 +1,241 @@
+{% extends 'clientsite/base.html' %}
+
+{% block content %}
+
+<div class="main-page-wrapper">
+
+    <div class="container">
+        <div class="row content-layout-wrapper align-items-start">
+            <div class="site-content col-lg-12 col-12 col-md-12 wd-builder-off" role="main">
+                <article id="post-8" class="post-8 page type-page status-publish hentry">
+                    <div class="entry-content">
+                        <div class="woocommerce">
+                            <div class="woocommerce-notices-wrapper"></div>
+                            <div class="woocommerce-form-login-toggle">
+                                <div class="woocommerce-info">
+                                        Returning customer? 
+                                        <a href="#" class="showlogin">Click here to login</a> 
+                                </div>
+                            </div>
+                            <div class="woocommerce-notices-wrapper"></div>
+                            <form name="checkout" method="post" class="checkout woocommerce-checkout row" action="{% url 'checkout' %}" enctype="multipart/form-data" novalidate="novalidate">
+                                {% csrf_token %}
+                                <div class="col-12 col-md-5 col-lg-6">
+                                    <div class="row" id="customer_details">
+                                        <div class="col-12">
+                                            <div class="woocommerce-billing-fields">
+                                                <h3>Billing &amp; Shipping</h3>
+                                                <div class="woocommerce-billing-fields__field-wrapper">
+                                                    <p class="form-row form-row-first thwcfd-field-wrapper thwcfd-field-text validate-required" id="billing_first_name_field" data-priority="10">
+                                                        <label for="billing_first_name" class="">First name&nbsp;
+                                                            <abbr class="required" title="required">*</abbr>
+                                                        </label>
+                                                        <span class="woocommerce-input-wrapper">
+                                                            <input type="text" class="input-text " name="first_name" id="billing_first_name" placeholder="" value="" autocomplete="given-name">
+                                                        </span>
+                                                    </p>
+                                                    <p class="form-row form-row-last thwcfd-field-wrapper thwcfd-field-text validate-required" id="billing_last_name_field" data-priority="20">
+                                                        <label for="billing_last_name" class="">Last name&nbsp;
+                                                            <abbr class="required" title="required">*</abbr>
+                                                        </label>
+                                                        <span class="woocommerce-input-wrapper">
+                                                            <input type="text" class="input-text " name="last_name" id="billing_last_name" placeholder="" value="" autocomplete="family-name">
+                                                        </span>
+                                                    </p>
+                                                    <p class="form-row form-row-wide address-field update_totals_on_change thwcfd-field-wrapper thwcfd-field-country validate-required" id="billing_country_field" data-priority="30">
+                                                        <label for="billing_country" class="">Country / Region&nbsp;
+                                                            <abbr class="required" title="required">*</abbr>
+                                                        </label>
+                                                        <span class="woocommerce-input-wrapper">
+                                                            <strong>Kenya</strong>
+                                                            <input type="hidden" name="billing_country" id="billing_country" value="KE" autocomplete="country" class="country_to_state" readonly="readonly">
+                                                        </span>
+                                                    </p>
+                                                    <p class="form-row address-field thwcfd-field-wrapper thwcfd-field-text validate-required form-row-wide" id="billing_address_1_field" data-priority="40">
+                                                        <label for="billing_address_1" class="">Delivery Location&nbsp;
+                                                            <abbr class="required" title="required">*</abbr>
+                                                        </label>
+                                                        <span class="woocommerce-input-wrapper">
+                                                            <input type="text" class="input-text " name="location" id="billing_address_1" placeholder="**Describe as Accurately as Possible**" value="" autocomplete="address-line1">
+                                                        </span>
+                                                    </p>
+                                                    <p class="form-row form-row-wide thwcfd-field-wrapper thwcfd-field-tel validate-required validate-phone" id="billing_phone_field" data-priority="50">
+                                                        <label for="billing_phone" class="">Phone&nbsp;
+                                                            <abbr class="required" title="required">*</abbr>
+                                                        </label>
+                                                        <span class="woocommerce-input-wrapper">
+                                                            <input type="tel" class="input-text " name="phone" id="billing_phone" placeholder="" value="" autocomplete="tel">
+                                                        </span>
+                                                    </p>
+                                                    <p class="form-row form-row-wide thwcfd-field-wrapper thwcfd-field-email validate-required validate-email" id="billing_email_field" data-priority="60">
+                                                        <label for="billing_email" class="">Email address&nbsp;
+                                                            <abbr class="required" title="required">*</abbr>
+                                                        </label>
+                                                        <span class="woocommerce-input-wrapper">
+                                                            <input type="email" class="input-text " name="email" id="billing_email" placeholder="" value="" autocomplete="email username">
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                                </div>
+                                                <div class="woocommerce-account-fields">
+                                                    <p class="form-row form-row-wide create-account woocommerce-validated">
+                                                        <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+                                                            <input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" type="checkbox" name="createaccount" value="1"> 
+                                                            <span>Create an account?</span>
+                                                        </label>
+                                                    </p>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                        <div class="col-12">    
+                                            <div class="woocommerce-shipping-fields">
+                                                <div class="woocommerce-additional-fields">
+                                                    <h3>Additional information</h3>
+                                                    <div class="woocommerce-additional-fields__field-wrapper">
+                                                        <p class="form-row notes thwcfd-field-wrapper thwcfd-field-textarea" id="order_comments_field" data-priority="">
+                                                            <label for="order_comments" class="">Order notes&nbsp;
+                                                                <span class="optional">(optional)</span>
+                                                            </label>
+                                                            <span class="woocommerce-input-wrapper">
+                                                                <textarea name="order_comments" class="input-text " id="order_comments" placeholder="Notes about your order, e.g. special notes for delivery." rows="2" cols="5"></textarea>
+                                                                <input type="hidden" name="additional_information">
+                                                            </span>
+                                                        </p> 
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-7 col-lg-6">
+                                            <div class="checkout-order-review">
+                                                <h3 id="order_review_heading">Your order</h3>
+                                                <div id="order_review" class="woocommerce-checkout-review-order">
+                                                    <div class="wd-table-wrapper">
+                                                        <table class="shop_table woocommerce-checkout-review-order-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="product-name">Product</th>
+                                                                    <th class="product-total">Subtotal</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for cart_item in cart_items %}
+                                                                    <tr class="cart_item">
+                                                                        <td class="product-name"> 
+                                                                            {{ cart_item.product.name }}&nbsp;						 
+                                                                            <strong class="product-quantity">×&nbsp;{{ cart_item.quantity }}</strong>											
+                                                                        </td>
+                                                                        <td class="product-total">
+                                                                            <span class="woocommerce-Price-amount amount"><bdi>
+                                                                                <span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;{{ cart_item.subtotal }}</bdi></span>					
+                                                                        </td>
+                                                                    </tr>
+                                                                {% endfor %}
+                                                            </tbody>
+                                                            <tfoot>
+                                                                <tr class="cart-subtotal">
+                                                                    <th>Subtotal</th>
+                                                                    <td><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;{{ total_cost }}</bdi></span></td>
+                                                                </tr>           
+                                                                <tr class="woocommerce-shipping-totals shipping">
+                                                                    <th>Shipping</th>
+                                                                    <td data-title="Shipping">
+                                                                        <ul id="shipping_method" class="woocommerce-shipping-methods">
+                                                                            <li>
+                                                                                <input type="hidden" name="shipping_method[0]" data-index="0" id="shipping_method_0_flat_rate1" value="flat_rate:1" class="shipping_method">
+                                                                                <label for="shipping_method_0_flat_rate1">Flat rate: <span class="woocommerce-Price-amount amount"><bdi>
+                                                                                    <span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;3,000</bdi></span>
+                                                                                </label>					
+                                                                            </li>
+                                                                        </ul>
+                                                                    </td>
+                                                                </tr>    
+                                                                <tr class="order-total">
+                                                                    <th>Total</th>
+                                                                        <td><strong><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;{{ total_cost }}</bdi></span></strong> </td>
+                                                                </tr>
+                                                            </tfoot>
+                                                        </table>
+                                                    </div>
+                                                    <div id="payment" class="woocommerce-checkout-payment">
+                                                        <ul class="wc_payment_methods payment_methods methods">
+                                                            <li class="wc_payment_method payment_method_cod">
+                                                                <input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="cod" checked="checked" data-order_button_text="" style="display: none;">
+    
+                                                                <label for="payment_method_cod">
+                                                                    Cash on delivery 	
+                                                                </label>
+                                                                    <div class="payment_box payment_method_cod">
+                                                                    <p>Pay with cash upon delivery.</p>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="form-row place-order">
+                                                            <noscript>
+                                                                Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so.			<br/><button type="submit" class="button alt wp-element-button" name="woocommerce_checkout_update_totals" value="Update totals">Update totals</button>
+                                                            </noscript>
+                                                            <p class="form-row " id="mailpoet_woocommerce_checkout_optin_field" data-priority="">
+                                                                <span class="woocommerce-input-wrapper">
+                                                                    <label class="checkbox woocommerce-form__label woocommerce-form__label-for-checkbox checkbox" data-automation-id="woo-commerce-subscription-opt-in">
+                                                                        <input type="checkbox" class="input-checkbox woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="mailpoet_woocommerce_checkout_optin" id="mailpoet_woocommerce_checkout_optin" value="1"> I would like to receive exclusive emails with discounts and product information&nbsp;
+                                                                        <span class="optional">(optional)</span>
+                                                                    </label>
+                                                                </span>
+                                                            </p>
+                                                            <input type="hidden" id="mailpoet_woocommerce_checkout_optin_present" name="mailpoet_woocommerce_checkout_optin_present" value="1" class="">	
+                                                            <div class="woocommerce-terms-and-conditions-wrapper">
+                                                            <div class="woocommerce-privacy-policy-text"><p>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our <a href="https://etech.co.ke/privacy-policy/" class="woocommerce-privacy-policy-link" target="_blank">privacy policy</a>.</p>
+                                                            </div>
+                                                            <div class="woocommerce-terms-and-conditions" style="display: none; max-height: 200px; overflow: auto;">
+                                                                <p><strong>Overview</strong></p>
+                                                                <p>Our refund and returns policy lasts 14 days for Photocopiers and Printers, and 48hrs for consumables (Toners, developers, ink). If these times have passed since your purchase, we can’t offer you a full refund or exchange.</p>
+                                                                <p>To be eligible for a return, your item must be unused and in the same condition that you received it. It must also be in the original packaging.</p>
+                                                                <p>To complete your return, we require a receipt or proof of purchase.</p>
+                                                                <p>Please do not send your purchase back to the manufacturer.</p>
+                                                                <p>There are certain situations where only partial refunds are granted:</p>
+                                                                <p>Any item not in its original condition, is damaged, or missing parts for reasons not due to our error.<br>Any item that is returned more than 14 days after delivery.</p>
+                                                                <p><strong>Refunds</strong><br>Once your return is received and inspected, we will send you an email to notify you that we have received your returned item. We will also notify you of the approval or rejection of your refund.</p>
+                                                                <p>If you are approved, then your refund will be processed, and a credit will automatically be applied to your credit card or original method of payment, within 14 days.</p>
+                                                                <p>Late or missing refunds</p>
+                                                                <p>If you haven’t received a refund yet, first check your bank account again.</p>
+                                                                <p>Then contact your credit card company, it may take some time before your refund is officially posted.</p>
+                                                                <p>Next contact your bank. There is often some processing time before a refund is posted.</p>
+                                                                <p>If you’ve done all of this and you still have not received your refund yet, please contact us at sales@etech.co.ke or call us on 0720224770.</p>
+                                                                <p><strong>Exchanges</strong><br>We only replace items if they are defective or damaged. If you need to exchange it for the same item, send us an email at sales@etech.co.ke or call us on 0720224770, and send your item to: Rm 207, 2nd Flr, Old Ramogi hse, Luthuli Avenue, Nairobi.</p>
+                                                                <p><strong>Shipping returns<br></strong>To return your product, you should send your product to: Rm 207, 2nd Flr, Old Ramogi hse, Luthuli Avenue, Nairobi.</p>
+                                                                <p>You will be responsible for paying for your own shipping costs for returning your item. Shipping costs are non-refundable. If you receive a refund, the cost of return shipping will be deducted from your refund.</p>
+                                                                <p>Depending on where you live, the time it may take for your exchanged product to reach you may vary.</p>
+                                                                <p>If you are returning more expensive items, you may consider using a trackable shipping service or purchasing shipping insurance.</p>
+                                                                <p><strong>Need help?<br></strong>Contact us at info@etech.co.ke or call us on 0720224770. for questions related to refunds and returns.</p>
+                                                            </div>
+                                                            <p class="form-row validate-required">
+                                                                <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+                                                                <input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="terms" id="terms">
+                                                                    <span class="woocommerce-terms-and-conditions-checkbox-text">I have read and agree to the website <a href="https://etech.co.ke/refund_returns/" class="woocommerce-terms-and-conditions-link" target="_blank">terms and conditions</a></span>&nbsp;<abbr class="required" title="required">*</abbr>
+                                                                </label>
+                                                                <input type="hidden" name="terms-field" value="1">
+                                                            </p>
+                                                        </div>
+        
+
+                                                        <div class="wc-proceed-to-checkout">
+                                                            <button type="submit" class="checkout-button button alt wc-forward wp-element-button">
+                                                            Place order</button>
+                                                        </div>
+                                                        <input type="hidden" id="woocommerce-process-checkout-nonce" name="woocommerce-process-checkout-nonce" value="74dce22975"><input type="hidden" name="_wp_http_referer" value="/?wc-ajax=update_order_review">	</div>
+                                                    </div>
+    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+{% endblock %}

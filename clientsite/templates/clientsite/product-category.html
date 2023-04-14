@@ -1,0 +1,276 @@
+{% extends 'clientsite/base.html' %}
+
+{% block content %}
+
+<div class="main-page-wrapper">
+
+<div class="container">
+<div class="row content-layout-wrapper align-items-start">
+<aside class="sidebar-container col-lg-3 col-md-3 col-12 order-last order-md-first sidebar-left area-sidebar-shop">
+<div class="wd-heading">
+ <div class="close-side-widget wd-action-btn wd-style-text wd-cross-icon">
+<a href="#" rel="nofollow noopener">Close</a>
+</div>
+</div>
+<div class="widget-area">
+<div id="woocommerce_price_filter-5" class="wd-widget widget sidebar-widget woocommerce widget_price_filter"><h5 class="widget-title">Filter by price</h5>
+<form method="get" action="https://etech.co.ke/shop/">
+<div class="price_slider_wrapper">
+<div class="price_slider" style="display:none;"></div>
+<div class="price_slider_amount" data-step="10">
+<label class="screen-reader-text" for="min_price">Min price</label>
+<input type="text" id="min_price" name="min_price" value="0" data-min="0" placeholder="Min price" />
+<label class="screen-reader-text" for="max_price">Max price</label>
+<input type="text" id="max_price" name="max_price" value="3200000" data-max="3200000" placeholder="Max price" />
+<button type="submit" class="button wp-element-button">Filter</button>
+<div class="price_label" style="display:none;">
+Price: <span class="from"></span> &mdash; <span class="to"></span>
+</div>
+<div class="clear"></div>
+</div>
+</div>
+</form>
+</div>
+<div id="woodmart-woocommerce-layered-nav-13" class="wd-widget widget sidebar-widget woodmart-woocommerce-layered-nav">
+    <h5 class="widget-title">Brands</h5><div class="wd-scroll">
+        <ul class="wd-swatches-filter wd-filter-list wd-labels-on wd-size-normal wd-layout-list wd-text-style-1 wd-swatches-brands wd-scroll-content">
+            {% for brand in brands %}
+                <li class="wc-layered-nav-term wd-swatch-wrap">
+                    <a rel="nofollow noopener" href="index61a3.html?filter_brand=canon" class="layered-nav-link">
+                    <span class="wd-swatch wd-bg">
+                        <span class="wd-swatch-bg" style="">
+                            <img width="250" height="120" src="../wp-content/themes/woodmart/images/lazy.png" class="attachment-full size-full wd-lazy-load wd-lazy-fade" alt="Canon Brand" decoding="async" loading="lazy" srcset="" sizes="(max-width: 250px) 100vw, 250px" data-wood-src="https://etech.co.ke/wp-content/uploads/2022/08/Untitled-design-18.jpg" data-srcset="https://etech.co.ke/wp-content/uploads/2022/08/Untitled-design-18.jpg 250w, https://etech.co.ke/wp-content/uploads/2022/08/Untitled-design-18-150x72.jpg 150w, https://etech.co.ke/wp-content/uploads/2022/08/Untitled-design-18-64x31.jpg 64w" /></span>
+                            <span class="wd-swatch-text">Canon</span>
+                        </span>
+                        <span class="wd-filter-lable layer-term-lable">{{brand.brand_name}}</span>
+                    </a> 
+                    <span class="count">15</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+    <div id="block-17" class="wd-widget widget sidebar-widget widget_block">
+        <div data-block-name="woocommerce/product-categories" class="wp-block-woocommerce-product-categories wc-block-product-categories is-list " style="">
+            <ul class="wc-block-product-categories-list wc-block-product-categories-list--depth-0"> 
+                {% for product_category in product_categories %}
+                    <li class="wc-block-product-categories-list-item"> 
+                        <a style="" href="../product-category/computers/index.html">
+                            <span class="wc-block-product-categories-list-item__name">{{product_category.category_name}}</span>
+                        </a>
+                        <span class="wc-block-product-categories-list-item-count">
+                            <span aria-hidden="true">25</span>
+                            <span class="screen-reader-text">25 products</span>
+                        </span>
+                    </li> 
+                {% endfor %}
+            </ul>
+        </div>
+    </div> 
+</div>
+</aside>
+<div class="site-content shop-content-area col-lg-9 col-12 col-md-9 description-area-before content-with-products wd-builder-off" role="main">
+<div class="woocommerce-notices-wrapper"></div>
+<div class="shop-loop-head">
+<div class="wd-shop-tools">
+<div class="wd-breadcrumbs">
+<nav class="woocommerce-breadcrumb"> <a href="../index.html" class="breadcrumb-link breadcrumb-link-last">
+Home </a>
+<span class="breadcrumb-last">
+Shop </span>
+</nav> </div>
+<p class="woocommerce-result-count">
+Showing 1&ndash;12 of 442 results</p>
+</div>
+<div class="wd-shop-tools">
+<div class="wd-show-sidebar-btn wd-action-btn wd-style-text wd-burger-icon">
+<a href="#" rel="nofollow">Show sidebar</a>
+</div>
+<div class="wd-products-per-page">
+<span class="per-page-title">
+Show </span>
+<a rel="nofollow noopener" href="indexca5c.html?per_page=9" class="per-page-variation">
+<span>
+9 </span>
+</a>
+<span class="per-page-border"></span>
+<a rel="nofollow noopener" href="index1c07.html?per_page=12" class="per-page-variation current-variation">
+<span>
+12 </span>
+</a>
+<span class="per-page-border"></span>
+<a rel="nofollow noopener" href="index27e6.html?per_page=18" class="per-page-variation">
+<span>
+18 </span>
+</a>
+<span class="per-page-border"></span>
+<a rel="nofollow noopener" href="indexbd2b.html?per_page=24" class="per-page-variation">
+<span>
+24 </span>
+</a>
+<span class="per-page-border"></span>
+</div>
+<div class="wd-products-shop-view products-view-grid">
+<a rel="nofollow noopener" href="indexcc7b.html?shop_view=grid&amp;per_row=3" class="shop-view per-row-3" aria-label="Grid view 3">
+<svg version="1.1" id="shop-view-column-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="19px" height="19px" viewBox="0 0 19 19" enable-background="new 0 0 19 19" xml:space="preserve">
+<rect width="5" height="5" />
+<rect x="7" width="5" height="5" />
+<rect x="14" width="5" height="5" />
+<rect y="7" width="5" height="5" />
+<rect x="7" y="7" width="5" height="5" />
+<rect x="14" y="7" width="5" height="5" />
+<rect y="14" width="5" height="5" />
+<rect x="7" y="14" width="5" height="5" />
+<rect x="14" y="14" width="5" height="5" />
+</svg>
+</a>
+<a rel="nofollow noopener" href="index475d.html?shop_view=grid&amp;per_row=4" class="shop-view current-variation per-row-4" aria-label="Grid view 4">
+<svg version="1.1" id="shop-view-column-4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="19px" height="19px" viewBox="0 0 19 19" enable-background="new 0 0 19 19" xml:space="preserve">
+<rect width="4" height="4" />
+<rect x="5" width="4" height="4" />
+<rect x="10" width="4" height="4" />
+<rect x="15" width="4" height="4" />
+<rect y="5" width="4" height="4" />
+<rect x="5" y="5" width="4" height="4" />
+<rect x="10" y="5" width="4" height="4" />
+<rect x="15" y="5" width="4" height="4" />
+<rect y="15" width="4" height="4" />
+<rect x="5" y="15" width="4" height="4" />
+<rect x="10" y="15" width="4" height="4" />
+<rect x="15" y="15" width="4" height="4" />
+<rect y="10" width="4" height="4" />
+<rect x="5" y="10" width="4" height="4" />
+<rect x="10" y="10" width="4" height="4" />
+<rect x="15" y="10" width="4" height="4" />
+</svg>
+</a>
+<a rel="nofollow noopener" href="index5902.html?shop_view=grid&amp;per_row=5" class="shop-view per-row-5" aria-label="Grid view 5">
+<svg version="1.1" id="shop-view-column-5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="19px" viewBox="0 0 24 19" enable-background="new 0 0 24 19" xml:space="preserve">
+<rect width="4" height="4" />
+<rect x="5" width="4" height="4" />
+<rect x="10" width="4" height="4" />
+<rect x="15" width="4" height="4" />
+<rect x="20" width="4" height="4" />
+<rect y="5" width="4" height="4" />
+<rect x="5" y="5" width="4" height="4" />
+<rect x="10" y="5" width="4" height="4" />
+<rect x="15" y="5" width="4" height="4" />
+<rect x="20" y="5" width="4" height="4" />
+<rect y="10" width="4" height="4" />
+<rect x="5" y="10" width="4" height="4" />
+<rect x="10" y="10" width="4" height="4" />
+<rect x="15" y="10" width="4" height="4" />
+<rect x="20" y="10" width="4" height="4" />
+<rect y="15" width="4" height="4" />
+<rect x="5" y="15" width="4" height="4" />
+<rect x="10" y="15" width="4" height="4" />
+<rect x="15" y="15" width="4" height="4" />
+<rect x="20" y="15" width="4" height="4" />
+</svg>
+</a>
+</div>
+<div class="wd-filter-buttons wd-action-btn wd-style-text">
+<a href="#" rel="nofollow" class="open-filters">Filters</a>
+</div>
+</div>
+</div>
+<div class="filters-area"><div class="filters-inner-area align-items-start row"><div id="WOODMART_Widget_Sorting" class="wd-widget widget filter-widget widget-count-4 col-lg-3 col-md-3 col-sm-6 col-12 woodmart-woocommerce-sort-by"><h5 class="widget-title">Sort by</h5><form class="woocommerce-ordering-list wd-style-underline wd-ordering-mb-icon" method="get">
+<ul>
+<li>
+<a href="index5156.html?orderby=popularity" data-order="popularity" class="selected-order">Popularity</a>
+</li>
+<li>
+<a href="indexa0bc.html?orderby=rating" data-order="rating" class="">Average rating</a>
+</li>
+<li>
+<a href="index729c.html?orderby=date" data-order="date" class="">Newness</a>
+</li>
+<li>
+<a href="index28f0.html?orderby=price" data-order="price" class="">Price: low to high</a>
+</li>
+<li>
+<a href="index6a50.html?orderby=price-desc" data-order="price-desc" class="">Price: high to low</a>
+</li>
+</ul>
+</form>
+</div><div id="WOODMART_Widget_Price_Filter" class="wd-widget widget filter-widget widget-count-4 col-lg-3 col-md-3 col-sm-6 col-12 woodmart-price-filter"><h5 class="widget-title">Price filter</h5> <div class="woodmart-price-filter">
+<ul>
+<li>
+<a rel="nofollow noopener" href="index.html" class="current-state">All</a>
+</li>
+<li>
+<a rel="nofollow noopener" href="indexc44e.html?min_price=0&amp;max_price=800000" class=""><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;0</span> - <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;800,000</span></a>
+</li>
+<li>
+<a rel="nofollow noopener" href="index632f.html?min_price=800000&amp;max_price=1600000" class=""><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;800,000</span> - <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;1,600,000</span></a>
+</li>
+<li>
+<a rel="nofollow noopener" href="index4488.html?min_price=1600000&amp;max_price=2400000" class=""><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;1,600,000</span> - <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;2,400,000</span></a>
+</li>
+<li>
+<a rel="nofollow noopener" href="index7cd0.html?min_price=2400000&amp;max_price=3200000" class=""><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;2,400,000</span> - <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;3,200,000</span></a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="wd-sticky-loader"><span class="wd-loader"></span></div>
+<div class="products elements-grid wd-products-holder  wd-spacing-20 grid-columns-4 products-bordered-grid pagination-more-btn title-line-one wd-stretch-cont-lg align-items-start row" data-source="main_loop" data-min_price="" data-max_price="" data-columns="4">
+    {% for product in products %}
+        <div class="product-grid-item wd-with-labels product wd-hover-quick  col-lg-3 col-md-3 col-6 type-product post-14766 status-publish instock product_cat-kyocera-toners product_cat-toners has-post-thumbnail sale shipping-taxable purchasable product-type-simple" data-loop="2" data-id="14766">
+            <div class="product-wrapper">
+                <div class="product-element-top wd-quick-shop">
+                    <a href="../product/kyocera-tk-7205-toner-cartridge-black-taskalfa-3510i/index.html" class="product-image-link">
+                        <div class="product-labels labels-rectangular">
+                            <span class="onsale product-label">-35%</span>
+                        </div>
+                        <img width="500" height="500" src="{{product.image.url}}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-image-14819 wd-lazy-load wd-lazy-fade" alt="" decoding="async" loading="lazy" srcset="" sizes="(max-width: 500px) 100vw, 500px"  /> 
+                    </a>    
+                <div class="wd-buttons wd-pos-r-t">
+                    <div class="quick-view wd-action-btn wd-style-icon wd-quick-view-icon">
+                        <a href="{% url 'product-detail' product.id %}" class="open-quick-view quick-view-button" rel="nofollow" data-id="14766">Quick view</a>
+                    </div>
+                    <div class="wd-wishlist-btn wd-action-btn wd-style-icon wd-wishlist-icon">
+                        <a class="" href="../wishlist/index.html" data-key="7e24a7f9fb" data-product-id="14766" rel="nofollow" data-added-text="Browse Wishlist">
+                            <span>Add to wishlist</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="wd-add-btn wd-add-btn-replace">
+                    <a href="index9fea.html?add-to-cart=14766" data-quantity="1" class="button wp-element-button product_type_simple add_to_cart_button ajax_add_to_cart add-to-cart-loop" data-product_id="14766" data-product_sku="" aria-label="Add &ldquo;Kyocera TK-7205, Toner Cartridge Black, TASKalfa 3510i&rdquo; to your cart" rel="nofollow"><span>Add to cart</span></a> </div>
+                </div>
+                <div class="product-element-bottom">
+                    <h3 class="wd-entities-title">
+                        <a href="{% url 'product-detail' product.id %}">{{product.product_name}}</a></h3>
+                    <div class="wd-product-cats">
+                        <a href="../product-category/toners/index.html" rel="tag">{{product.brand_name}}</a>, 
+                        <a href="../product-category/toners/kyocera-toners/index.html" rel="tag">{{product.category_name}}</a> 
+                    </div>
+                    <p class="wd-product-stock stock wd-style-default in-stock">
+                    In stock </p>
+                    <span class="price"><del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi>
+                        <span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;8,500</bdi></span></del> <ins>
+                            <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">KSh</span>
+                                &nbsp;{{product.price}}</bdi>
+                            </span></ins>
+                        </span>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<div class="wd-loop-footer products-footer">
+<a href="page/2/index.html" rel="nofollow noopener" class="btn wd-load-more wd-products-load-more load-on-click"><span class="load-more-label">Load more products</span></a>
+{% comment %} <div class="btn wd-load-more wd-load-more-loader">
+    <span class="load-more-loading">Loading...</span>
+</div> {% endcomment %}
+</div>
+</div>
+</div>
+</div> 
+</div> 
+
+{% endblock %}

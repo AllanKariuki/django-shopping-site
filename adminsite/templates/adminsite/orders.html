@@ -1,0 +1,132 @@
+{% extends 'adminsite/base.html' %}
+
+{% load static %}
+{% block content %}
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Orders</h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5  form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-secondary" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Your Orders <small>Activity report</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Settings 1</a>
+                            <a class="dropdown-item" href="#">Settings 2</a>
+                          </div>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    
+                    <div class="col-md-12 col-sm-9 ">
+
+                      <div class="profile_title">
+                        <div class="col-md-6">
+                          <h2>Orders Report</h2>
+                        </div>
+                        <div class="col-md-6">
+                          <div id="reportrange" class="pull-right" style="margin-top: 5px; background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #E6E9ED">
+                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                            <span>March 30, 2023 - June 28, 2023</span> <b class="caret"></b>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                          
+                          <li role="presentation" class="active"><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Your records</a>
+                          </li>
+                          
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                          <div role="tabpanel" class="tab-pane active " id="tab_content1" aria-labelledby="home-tab">
+
+                           
+                          </div>
+                          <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+
+                            <!-- start user projects -->
+                            <table class="data table table-striped no-margin">
+                              <thead>
+                                <tr>
+                                  <th>#</th>
+                                  <th>Product Name</th>
+                                  <th>Customer Name</th>
+                                  <th>Quantity</th>
+                                  <th>Price</th>
+                                  <th class="hidden-phone">Date</th>
+                                  <th>Description</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                               {% for order in orders %}
+                                <tr>
+                                  <td>{{order.id}}</td>
+                                  <td>{{order.product_name}}</td>
+                                  <td>{{order.customer_name}}</td>
+                                  <td>{{order.quantity}}</td>
+                                  <td class="hidden-phone">{{order.price}}</td>
+                                  <td>{{order.description}}</td>
+                                  <td class="hidden-phone">
+                                  <a href= "{% url 'orderDetail' order.id %}">
+                                    <button type="button" class="btn btn-round btn-primary"> View</button>
+                                  </a>
+                                  </td>
+                                  <td class="vertical-align-mid">
+                                    <div class="progress">
+                                      <div class="progress-bar progress-bar-success" data-transitiongoal="35"></div>
+                                    </div>
+                                  </td>
+                                </tr>
+                              {% endfor %}
+                              </tbody>
+                            </table>
+                            <!-- end user projects -->
+
+                          </div>
+                          {% comment %} <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+                            <p>xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui
+                              photo booth letterpress, commodo enim craft beer mlkshk </p>
+                          </div> {% endcomment %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+{% endblock content %}

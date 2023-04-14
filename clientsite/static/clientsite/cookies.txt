@@ -1,0 +1,10 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+etech.co.ke	TRUE	/	FALSE	1999999999	woocommerce_items_in_cart	1
+etech.co.ke	TRUE	/	FALSE	1999999999	wp_woocommerce_session_38a180d009c992254d678061b4882525	t_e5fcd8b8d4f55121865f099ac88bb2%7C%7C1679193544%7C%7C1679189944%7C%7Ca906d64a22c969c28f70372da263c06f
+etech.co.ke	TRUE	/	FALSE	1999999999	woodmart_recently_viewed_products	15075%7C15136%7C14707%7C15449%7C14632%7C14633%7C17048%7C17060%7C17064%7C16979%7C17025%7C17033%7C17037%7C14190
+etech.co.ke	TRUE	/	FALSE	1999999999	shop_view	grid
+etech.co.ke	TRUE	/	FALSE	1999999999	shop_per_row	5
+etech.co.ke	TRUE	/	FALSE	1999999999	shop_per_page	9
+etech.co.ke	TRUE	/	FALSE	1999999999	woocommerce_cart_hash	b63264746408dad77189d2033cae2476
+

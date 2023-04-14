@@ -1,0 +1,287 @@
+{% extends 'clientsite/base.html' %}
+
+{% block content %}
+
+<div class="main-page-wrapper">
+		
+		
+    <!-- MAIN CONTENT AREA -->
+    <div class="container">
+        <div class="row content-layout-wrapper align-items-start">
+            
+            <div class="site-content col-lg-12 col-12 col-md-12 wd-builder-off" role="main">
+
+                <article id="post-7" class="post-7 page type-page status-publish hentry">
+                    <div class="entry-content">
+                        <div class="woocommerce">
+                            <div class="woocommerce cart-content-wrapper row">
+
+                                <div class="woocommerce-notices-wrapper"></div>	
+                                <form class="woocommerce-cart-form cart-data-form col-12 col-lg-7 col-xl-8" action="" method="post">
+                                    <div class="cart-table-section">                                        
+                                        <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="product-remove"><span class="screen-reader-text">Remove item</span></th>
+                                                    <th class="product-thumbnail"><span class="screen-reader-text">Thumbnail image</span>;</th>
+                                                    <th class="product-name">Product</th>
+                                                    <th class="product-price">Price</th>
+                                                    <th class="product-quantity">Quantity</th>
+                                                    <th class="product-subtotal">Subtotal</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                              {% for cart_item in cart_items %}
+                                                <tr class="woocommerce-cart-form__cart-item cart_item">
+                                                    <td class="product-remove">
+                                                        <a href="{% url 'cart-remove' cart_item.id %}" class="remove" aria-label="Remove this item" data-product_id="15237" data-product_sku="">×</a>								
+                                                    </td>
+                                                    <td class="product-thumbnail">
+                                                        <a href="#">
+                                                            <img width="150" height="150" src="{{cart_item.product.image.url}}">
+                                                        </a>								
+                                                    </td>
+                                                    <td class="product-name" data-title="Product">
+                                                        <a href="{% url 'product-detail' cart_item.product.id %}">{{ cart_item.product.name }}</a>								
+                                                    </td> 
+                                                    <td class="product-price" data-title="Price">
+                                                        <span class="woocommerce-Price-amount amount"><bdi>
+                                                            <span class="woocommerce-Price-currencySymbol">KSh</span>
+                                                            &nbsp;{{ cart_item.product.price }}</bdi>
+                                                        </span>								
+                                                    </td>
+                                            <form method="post" action = "{% url 'cart_update' cart_item.id cart_item.quantity %}">
+                                                {% csrf_token %}
+                                                    <td class="product-quantity" data-title="Quantity">
+                                                                
+                                                        <div class="quantity">
+
+                                                                <input type="button" value="-" class="minus">
+
+                                                        <label class="screen-reader-text" for="quantity_642517932649a">Ricoh Aficio MP 501 Photocopier</label>
+                                                        <input type="number" name="quantity" id="quantity_642517932649a" value= "{{ cart_item.quantity }}" class="input-text qty text" value="{{cart.quantity}}" title="Qty" min="1" max="" name="cart[60eb67dc94898061636fa066e0e5cd33][qty]" step="1" placeholder="" inputmode="numeric" autocomplete="off">
+
+                                                                <input type="button" value="+" class="plus">
+
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="product-subtotal" data-title="Subtotal">
+                                                        <span class="woocommerce-Price-amount amount"><bdi>
+                                                            <span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;{{ cart_item.subtotal }}</bdi>
+                                                        </span>								
+                                                    </td>
+                                                </tr>
+                                              {% endfor %}
+                                             </tbody>
+                                        </table>
+
+                                    <div class="row cart-actions">
+                                        <div class="col-12 order-last order-md-first col-md">
+                                             <div class="coupon">
+                                                <div class="wc-proceed-to-checkout">
+                                                    <a href="{% url 'shop' %}" class="checkout-button button alt wc-forward wp-element-button">
+                                                    Contiue Shopping</a>
+                                                </div>
+                                        </div>
+                                            
+                                    </div>
+                                    <div class="col-12 order-first order-md-last col-md-auto">            
+                                        <button type="submit" class="button wp-element-button" >
+                                            Update cart
+                                        </button>
+                                        <input type="hidden" id="woocommerce-cart-nonce" name="woocommerce-cart-nonce" value="c2dcd73c25"><input type="hidden" name="_wp_http_referer" value="/cart/">				</div>
+                                    </div>
+                                </form>
+                                </div>
+
+                                </form>
+
+                                <div class="cart-totals-section col-12 col-lg-5 col-xl-4 cart-collaterals">
+                                    <div class="cart_totals ">
+
+                                    <div class="cart-totals-inner set-mb-m reset-last-child">
+                                    <h2>Cart totals</h2>
+
+                                <table cellspacing="0" class="shop_table shop_table_responsive">
+
+                                    <tbody>
+                                        <tr class="cart-subtotal">
+                                            <th>Subtotal</th>
+                                            <td data-title="Subtotal"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;{{ total_cost }}</bdi></span></td>
+                                        </tr>
+                                        <tr class="woocommerce-shipping-totals shipping">
+                                            <th>Shipping</th>
+                                            <td data-title="Shipping">
+                                                <ul id="shipping_method" class="woocommerce-shipping-methods">
+                                                    <li>
+                                                        <input type="hidden" name="shipping_method[0]" data-index="0" id="shipping_method_0_flat_rate1" value="flat_rate:1" class="shipping_method">
+                                                        <label for="shipping_method_0_flat_rate1">
+                                                            Flat rate: 
+                                                            <span class="woocommerce-Price-amount amount"><bdi>
+                                                                <span class="woocommerce-Price-currencySymbol">KSh</span>
+                                                                    &nbsp;3,000</bdi>
+                                                            </span>
+                                                        </label>					
+                                                    </li>
+                                                </ul>
+                                                <p class="woocommerce-shipping-destination">
+                                                    Shipping to <strong>Nairobi County</strong>. 				
+                                                </p>              
+                                                <form class="woocommerce-shipping-calculator" action="https://etech.co.ke/cart/" method="post">
+                                                    <a href="#" class="shipping-calculator-button">Change address</a>
+                                                    <section class="shipping-calculator-form" style="display:none;">
+
+                                                    <p class="form-row form-row-wide" id="calc_shipping_country_field">
+                                                        <label for="calc_shipping_country" class="screen-reader-text">Country / region:</label>
+                                                        <select name="calc_shipping_country" id="calc_shipping_country" class="country_to_state country_select" rel="calc_shipping_state">
+                                                            <option value="default">Select a country / region…</option>
+                                                            <option value="KE" selected="selected">Kenya</option>				</select>
+                                                    </p>
+
+                                                    <p class="form-row validate-required form-row-wide address-field" id="calc_shipping_state_field">
+                                                    <span>
+                                                        <label for="calc_shipping_state" class="screen-reader-text">State / County:&nbsp;<abbr class="required" title="required">*</abbr></label>
+                                                        <select name="calc_shipping_state" class="state_select" id="calc_shipping_state" data-placeholder="State / County"><option value="">Select an option…</option><option value="KE01">Baringo</option><option value="KE02">Bomet</option><option value="KE03">Bungoma</option><option value="KE04">Busia</option><option value="KE05">Elgeyo-Marakwet</option><option value="KE06">Embu</option><option value="KE07">Garissa</option><option value="KE08">Homa Bay</option><option value="KE09">Isiolo</option><option value="KE10">Kajiado</option><option value="KE11">Kakamega</option><option value="KE12">Kericho</option><option value="KE13">Kiambu</option><option value="KE14">Kilifi</option><option value="KE15">Kirinyaga</option><option value="KE16">Kisii</option><option value="KE17">Kisumu</option><option value="KE18">Kitui</option><option value="KE19">Kwale</option><option value="KE20">Laikipia</option><option value="KE21">Lamu</option><option value="KE22">Machakos</option><option value="KE23">Makueni</option><option value="KE24">Mandera</option><option value="KE25">Marsabit</option><option value="KE26">Meru</option><option value="KE27">Migori</option><option value="KE28">Mombasa</option><option value="KE29">Murang’a</option><option value="KE30">Nairobi County</option><option value="KE31">Nakuru</option><option value="KE32">Nandi</option><option value="KE33">Narok</option><option value="KE34">Nyamira</option><option value="KE35">Nyandarua</option><option value="KE36">Nyeri</option><option value="KE37">Samburu</option><option value="KE38">Siaya</option><option value="KE39">Taita-Taveta</option><option value="KE40">Tana River</option><option value="KE41">Tharaka-Nithi</option><option value="KE42">Trans Nzoia</option><option value="KE43">Turkana</option><option value="KE44">Uasin Gishu</option><option value="KE45">Vihiga</option><option value="KE46">Wajir</option><option value="KE47">West Pokot</option></select>
+                                                    </span>
+                                                    </p>
+
+                                                    <p class="form-row validate-required form-row-wide address-field" id="calc_shipping_city_field">
+                                                        <label for="calc_shipping_city" class="screen-reader-text">City:&nbsp;<abbr class="required" title="required">*</abbr></label>
+                                                        <input type="text" class="input-text" value="" placeholder="City" name="calc_shipping_city" id="calc_shipping_city">
+                                                    </p>
+                                                
+                                                    <p class="form-row validate-required form-row-wide address-field" id="calc_shipping_postcode_field">
+                                                        <label for="calc_shipping_postcode" class="screen-reader-text">Postcode / ZIP:&nbsp;<abbr class="required" title="required">*</abbr></label>
+                                                        <input type="text" class="input-text" value="" placeholder="Postcode / ZIP" name="calc_shipping_postcode" id="calc_shipping_postcode">
+                                                    </p>
+                                                    
+                                                    <p><button type="submit" name="calc_shipping" value="1" class="button wp-element-button">Update</button></p>
+                                                    <input type="hidden" id="woocommerce-shipping-calculator-nonce" name="woocommerce-shipping-calculator-nonce" value="10c30b512d"><input type="hidden" name="_wp_http_referer" value="/cart/">	</section>
+                                                </form>
+
+                                            </td>
+                                        </tr>
+                                        <tr class="order-total">
+                                            <th>Total</th>
+                                            <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;58,000</bdi></span></strong> </td>
+                                        </tr>    
+                                    </tbody>
+                                </table>
+
+                                <div class="wc-proceed-to-checkout">
+                                    <a href="{% url 'order_detail' %}" class="checkout-button button alt wc-forward wp-element-button">
+                                    Proceed to checkout</a>
+                                </div>
+
+                            </div><!--.cart-totals-inner-->
+                        </div>
+                    </div>
+            </div>
+
+            <div class="div_evowap_btn">
+                <a href="https://wa.me/254720224770?text=%0A%0A-%3E+1+x+Ricoh+Aficio+MP+501+Photocopier++%3D+KSh+55.000+%0A%0ACart+Total%3A+KSh+55.000" class="evowap_btn" id="evowap_btn" role="button" target="">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg_wapp_evowap" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 90 90" style="enable-background:new 0 0 90 90;" xml:space="preserve">
+                        <path id="WhatsApp" d="M90,43.841c0,24.213-19.779,43.841-44.182,43.841c-7.747,0-15.025-1.98-21.357-5.455L0,90l7.975-23.522 c-4.023-6.606-6.34-14.354-6.34-22.637C1.635,19.628,21.416,0,45.818,0C70.223,0,90,19.628,90,43.841z M45.818,6.982 c-20.484,0-37.146,16.535-37.146,36.859c0,8.065,2.629,15.534,7.076,21.61L11.107,79.14l14.275-4.537 c5.865,3.851,12.891,6.097,20.437,6.097c20.481,0,37.146-16.533,37.146-36.857S66.301,6.982,45.818,6.982z M68.129,53.938 c-0.273-0.447-0.994-0.717-2.076-1.254c-1.084-0.537-6.41-3.138-7.4-3.495c-0.993-0.358-1.717-0.538-2.438,0.537 c-0.721,1.076-2.797,3.495-3.43,4.212c-0.632,0.719-1.263,0.809-2.347,0.271c-1.082-0.537-4.571-1.673-8.708-5.333 c-3.219-2.848-5.393-6.364-6.025-7.441c-0.631-1.075-0.066-1.656,0.475-2.191c0.488-0.482,1.084-1.255,1.625-1.882 c0.543-0.628,0.723-1.075,1.082-1.793c0.363-0.717,0.182-1.344-0.09-1.883c-0.27-0.537-2.438-5.825-3.34-7.977 c-0.902-2.15-1.803-1.792-2.436-1.792c-0.631,0-1.354-0.09-2.076-0.09c-0.722,0-1.896,0.269-2.889,1.344 c-0.992,1.076-3.789,3.676-3.789,8.963c0,5.288,3.879,10.397,4.422,11.113c0.541,0.716,7.49,11.92,18.5,16.223 C58.2,65.771,58.2,64.336,60.186,64.156c1.984-0.179,6.406-2.599,7.312-5.107C68.398,56.537,68.398,54.386,68.129,53.938z" fill="#FFFFFF">
+                        </path>
+                    </svg>
+                </a>		
+            </div>
+    
+            <div class="cart-collaterals">
+                <div class="cross-sells">
+                    <h3 class="title slider-title"><span>You may be interested in…</span></h3>
+                    <link rel="stylesheet" id="wd-product-loop-css" href="https://etech.co.ke/wp-content/themes/woodmart/css/parts/woo-product-loop.min.css?ver=7.1.4" type="text/css" media="all"> 						<link rel="stylesheet" id="wd-product-loop-quick-css" href="https://etech.co.ke/wp-content/themes/woodmart/css/parts/woo-product-loop-quick.min.css?ver=7.1.4" type="text/css" media="all"> 						<link rel="stylesheet" id="wd-woo-mod-add-btn-replace-css" href="https://etech.co.ke/wp-content/themes/woodmart/css/parts/woo-mod-add-btn-replace.min.css?ver=7.1.4" type="text/css" media="all"> 						<link rel="stylesheet" id="wd-bordered-product-css" href="https://etech.co.ke/wp-content/themes/woodmart/css/parts/woo-opt-bordered-product.min.css?ver=7.1.4" type="text/css" media="all"> 						<link rel="stylesheet" id="wd-woo-opt-title-limit-css" href="https://etech.co.ke/wp-content/themes/woodmart/css/parts/woo-opt-title-limit.min.css?ver=7.1.4" type="text/css" media="all"> 						<link rel="stylesheet" id="wd-woo-opt-stretch-cont-css" href="https://etech.co.ke/wp-content/themes/woodmart/css/parts/woo-opt-stretch-cont.min.css?ver=7.1.4" type="text/css" media="all"> 						<link rel="stylesheet" id="wd-owl-carousel-css" href="https://etech.co.ke/wp-content/themes/woodmart/css/parts/lib-owl-carousel.min.css?ver=7.1.4" type="text/css" media="all"> 									<div id="carousel-706" class="wd-carousel-container  slider-type-product products wd-carousel-spacing-20 products-bordered-grid title-line-one wd-stretch-cont-lg" data-owl-carousel="" data-hide_pagination_control="1" data-hide_prev_next_buttons="1" data-desktop="4" data-tablet_landscape="4" data-tablet="3" data-mobile="2">
+                        <div class="owl-carousel owl-items-lg-4 owl-items-md-4 owl-items-sm-3 owl-items-xs-2 owl-loaded owl-drag">                       
+                    
+                            <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 219px;"><div class="owl-item active" style="width: 218.5px;">
+                                <div class="slide-product owl-carousel-item">
+                                    <div class="product-grid-item wd-with-labels product wd-hover-quick type-product post-13919 status-publish last instock product_cat-kyocera-toners product_cat-toners product_tag-compatible-toner product_tag-kyocera product_tag-kyocera-toner product_tag-kyocera-toners-kenya has-post-thumbnail sale shipping-taxable purchasable product-type-simple" data-loop="1" data-id="13919">
+
+
+                                        <div class="product-wrapper">
+                                            <div class="product-element-top wd-quick-shop">
+                                                <a href="https://etech.co.ke/product/kyocera-tk-4105-toner/" class="product-image-link">
+                                                    <div class="product-labels labels-rectangular">
+                                                        <span class="onsale product-label">-33%</span>
+                                                    </div>
+                                                    <img width="500" height="500" src="https://etech.co.ke/wp-content/uploads/2022/09/TK-4105-500x500.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-image-13955 wd-lazy-load wd-lazy-fade wd-loaded" alt="" decoding="async" loading="lazy" srcset="https://etech.co.ke/wp-content/uploads/2022/09/TK-4105-500x500.jpg 500w, https://etech.co.ke/wp-content/uploads/2022/09/TK-4105-150x150.jpg 150w, https://etech.co.ke/wp-content/uploads/2022/09/TK-4105-64x64.jpg 64w, https://etech.co.ke/wp-content/uploads/2022/09/TK-4105-300x300.jpg 300w, https://etech.co.ke/wp-content/uploads/2022/09/TK-4105.jpg 600w" sizes="(max-width: 500px) 100vw, 500px" data-wood-src="https://etech.co.ke/wp-content/uploads/2022/09/TK-4105-500x500.jpg" data-srcset="https://etech.co.ke/wp-content/uploads/2022/09/TK-4105-500x500.jpg 500w, https://etech.co.ke/wp-content/uploads/2022/09/TK-4105-150x150.jpg 150w, https://etech.co.ke/wp-content/uploads/2022/09/TK-4105-64x64.jpg 64w, https://etech.co.ke/wp-content/uploads/2022/09/TK-4105-300x300.jpg 300w, https://etech.co.ke/wp-content/uploads/2022/09/TK-4105.jpg 600w">		
+                                                </a>
+                                                <div class="wd-buttons wd-pos-r-t">
+                                                    <div class="quick-view wd-action-btn wd-style-icon wd-quick-view-icon">
+                                                        <a href="https://etech.co.ke/product/kyocera-tk-4105-toner/" class="open-quick-view quick-view-button" rel="nofollow" data-id="13919">
+                                                            Quick view
+                                                        </a>
+                                                    </div>
+                                                    <div class="wd-wishlist-btn wd-action-btn wd-style-icon wd-wishlist-icon">
+                                                        <a class="" href="https://etech.co.ke/wishlist/" data-key="5546555b14" data-product-id="13919" rel="nofollow" data-added-text="Browse Wishlist">
+                                                            <span>Add to wishlist</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="wd-add-btn wd-add-btn-replace">
+            
+                                                    <a href="?add-to-cart=13919" data-quantity="1" class="button wp-element-button product_type_simple add_to_cart_button ajax_add_to_cart add-to-cart-loop" data-product_id="13919" data-product_sku="" aria-label="Add “Kyocera TK-4105 Toner” to your cart" rel="nofollow">
+                                                        <span>Add to cart</span>
+                                                    </a>			
+                                                </div>
+    
+                                            </div>
+                                            <div class="product-element-bottom">
+                                                <h3 class="wd-entities-title">
+                                                    <a href="https://etech.co.ke/product/kyocera-tk-4105-toner/">
+                                                        Kyocera TK-4105 Toner
+                                                    </a>
+                                                </h3>
+                                                <div class="wd-product-cats">
+                                                    <a href="https://etech.co.ke/product-category/toners/" rel="tag">Toners</a>, 
+                                                    <a href="https://etech.co.ke/product-category/toners/kyocera-toners/" rel="tag">Kyocera Toners</a>		
+                                                </div>
+                                                <p class="wd-product-stock stock wd-style-default in-stock">
+                                                    In stock			
+                                                </p>
+                                                <span class="price"><del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi>
+                                                    <span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;4,500</bdi></span></del> <ins>
+                                                        <span class="woocommerce-Price-amount amount"><bdi>
+                                                    <span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;3,000</bdi></span></ins></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-nav disabled">
+                        <div class="owl-prev wd-btn-arrow disabled"></div>
+                        <div class="owl-next wd-btn-arrow disabled"></div>
+                    </div>
+                    <div class="owl-dots disabled">
+                        <div class="owl-dot active">
+                            <span></span>
+                        </div>
+                    </div>
+                </div> <!-- end product-items -->
+            </div> <!-- end #carousel-706 -->
+        
+        
+        </div>
+    </div>
+
+</div>
+</div>
+
+                
+            </article><!-- #post -->
+
+            
+    
+        </div><!-- .site-content -->
+
+
+
+        </div><!-- .main-page-wrapper --> 
+        </div> <!-- end row -->
+</div> 
+{% endblock %}
