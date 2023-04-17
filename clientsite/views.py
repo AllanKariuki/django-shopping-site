@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from adminsite.models import Product, ProductCategory, Brand
 from .models import Order, OrderItem, CartItem
@@ -198,8 +199,8 @@ def registerpage(request):
             password = password, 
         )
         user = authenticate(request, username=username, email=email, password=password)
-        login(request, user)
-        redirect('admin-dashboard')
+        user.save()
+        return redirect('loginpage')
     else:
         return render(request, 'clientsite/register.html')
 

@@ -5,7 +5,9 @@ from .models import ProductCategory, Product, Profile, Brand
 from .forms import ProductCategoryForm, ProductForm, ProfileForm, EditProductCategoryForm, BrandForm
 from clientsite.models import RequestForQuotation, RequestForService, Order, OrderItem
 from django.contrib.auth.decorators import login_required
+from clientsite.decorators import admins_only
 
+@admins_only
 @login_required
 def index(request):
     context = {
@@ -14,6 +16,8 @@ def index(request):
         'categories': ProductCategory.objects.order_by('id')[:6],
     }
     return render(request, 'adminsite/index.html', context)
+
+@admins_only
 @login_required
 def category(request):
     prod_categories = ProductCategory.objects.all()
@@ -21,6 +25,8 @@ def category(request):
         'prod_categories' : prod_categories
     }
     return render(request, 'adminsite/product-category.html', context)
+
+@admins_only
 @login_required
 def addcategory(request):
     cat_form = ProductCategoryForm()
@@ -36,6 +42,8 @@ def addcategory(request):
         'cat_form' : cat_form
     }
     return render(request, 'adminsite/add-category.html', context)
+
+@admins_only
 @login_required
 def editcategory(request, id):
     category = ProductCategory.objects.get(id = id)
@@ -52,6 +60,8 @@ def editcategory(request, id):
     }
     
     return render(request, 'adminsite/edit-category.html', context)
+
+@admins_only
 @login_required
 def category_detail(request, id):
     category = ProductCategory.objects.get(id = id)
@@ -60,6 +70,7 @@ def category_detail(request, id):
     }
     return render(request, 'adminsite/category-detail.html', context)
 
+@admins_only
 @login_required
 def deletecategory(request, id):
     prod_category = ProductCategory.objects.get(id = id)
@@ -67,6 +78,7 @@ def deletecategory(request, id):
     return redirect('productcategory')
 
 #Brands
+@admins_only
 @login_required
 def brand(request):
     brands = Brand.objects.all()
@@ -75,6 +87,7 @@ def brand(request):
     }
     return render(request, 'adminsite/brands.html', context)
 
+@admins_only
 @login_required
 def addbrand(request):
     brand_form = BrandForm()
@@ -91,6 +104,7 @@ def addbrand(request):
     }
     return render(request, 'adminsite/add-brand.html', context)
 
+@admins_only
 @login_required
 def editbrand(request, id):
     category = Brand.objects.get(id = id)
@@ -108,6 +122,7 @@ def editbrand(request, id):
     
     return render(request, 'adminsite/edit-brand.html', context)
 
+@admins_only
 @login_required
 def brand_detail(request, id):
     brand = Brand.objects.get(id = id)
@@ -116,6 +131,7 @@ def brand_detail(request, id):
     }
     return render(request, 'adminsite/brand-detail.html', context)
 
+@admins_only
 @login_required
 def deletebrand(request, id):
     prod_category = ProductCategory.objects.get(id = id)
@@ -123,6 +139,7 @@ def deletebrand(request, id):
     return redirect('brands')
 
 
+@admins_only
 @login_required
 #
 def products(request):
@@ -131,6 +148,7 @@ def products(request):
     }
     return render(request, 'adminsite/products.html', context)
 
+@admins_only
 @login_required
 def product_detail(request, id):
     # product = Product.objects.get(id = id)
@@ -139,6 +157,7 @@ def product_detail(request, id):
     # }
     return render(request, 'adminsite/product-detail.html')
 
+@admins_only
 @login_required
 def orders(request):
     context = {
@@ -146,6 +165,7 @@ def orders(request):
     }
     return render(request, 'adminsite/orders.html', context)
 
+@admins_only
 @login_required
 def order_detail(request, id):
     order = Order.objects.get(id = id)
@@ -156,6 +176,7 @@ def order_detail(request, id):
     }
     return render(request, 'adminsite/order-detail.html', context)
 
+@admins_only
 @login_required
 def requestsForServices(request):
     context = {
@@ -163,6 +184,7 @@ def requestsForServices(request):
     }
     return render(request, 'adminsite/request-for-services.html', context)
 
+@admins_only
 @login_required
 def requestsForServicesDetail(request, id):
     requestForService = RequestForService.objects.get(id = id)
@@ -171,6 +193,7 @@ def requestsForServicesDetail(request, id):
     }
     return render(request, 'adminsite/request-for-services-detail.html', context)
 
+@admins_only
 @login_required
 def requestsForQuotation(request):
     context = {
@@ -178,6 +201,7 @@ def requestsForQuotation(request):
     }
     return render(request, 'adminsite/request-for-quotation.html', context)
 
+@admins_only
 @login_required
 def requestsForQuotationDetail(request, id):
     context = {
@@ -185,14 +209,18 @@ def requestsForQuotationDetail(request, id):
     }
     return render(request, 'adminsite/request-for-quotation-detail.html', context)
 
+@admins_only
 @login_required
 def profile(request):
     return render(request, 'adminsite/profile.html')
 
+@admins_only
 @login_required
 def editprofile(request):
     return render(request, 'adminsite/edit-profile.html')
 
+@admins_only
+@login_required
 def product_images(request):
     img_form = ProductForm()
     if request.method == 'POST':
@@ -207,6 +235,7 @@ def product_images(request):
         'img_form' : img_form
     }
     return render(request, 'adminsite/addimages.html', context)
+@admins_only
 @login_required
 def logoutpage(request):
     logout(request)
