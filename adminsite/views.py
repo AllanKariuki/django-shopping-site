@@ -3,8 +3,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .models import ProductCategory, Product, Profile, Brand
 from .forms import ProductCategoryForm, ProductForm, ProfileForm, EditProductCategoryForm, BrandForm
-from clientsite.models import RequestForQuotation, RequestForService, Order
+from clientsite.models import RequestForQuotation, RequestForService, Order, OrderItem
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def index(request):
     context = {
         'orders' : Order.objects.order_by('id')[:6],
@@ -12,14 +14,14 @@ def index(request):
         'categories': ProductCategory.objects.order_by('id')[:6],
     }
     return render(request, 'adminsite/index.html', context)
-
+@login_required
 def category(request):
     prod_categories = ProductCategory.objects.all()
     context = {
         'prod_categories' : prod_categories
     }
     return render(request, 'adminsite/product-category.html', context)
-
+@login_required
 def addcategory(request):
     cat_form = ProductCategoryForm()
     if request.method == 'POST':
@@ -34,7 +36,7 @@ def addcategory(request):
         'cat_form' : cat_form
     }
     return render(request, 'adminsite/add-category.html', context)
-
+@login_required
 def editcategory(request, id):
     category = ProductCategory.objects.get(id = id)
     cate_form = EditProductCategoryForm()
@@ -50,7 +52,7 @@ def editcategory(request, id):
     }
     
     return render(request, 'adminsite/edit-category.html', context)
-
+@login_required
 def category_detail(request, id):
     category = ProductCategory.objects.get(id = id)
     context = {
@@ -58,11 +60,14 @@ def category_detail(request, id):
     }
     return render(request, 'adminsite/category-detail.html', context)
 
+@login_required
 def deletecategory(request, id):
     prod_category = ProductCategory.objects.get(id = id)
     
     return redirect('productcategory')
 
+#Brands
+@login_required
 def brand(request):
     brands = Brand.objects.all()
     context = {
@@ -70,6 +75,7 @@ def brand(request):
     }
     return render(request, 'adminsite/brands.html', context)
 
+@login_required
 def addbrand(request):
     brand_form = BrandForm()
     if request.method == 'POST':
@@ -85,6 +91,7 @@ def addbrand(request):
     }
     return render(request, 'adminsite/add-brand.html', context)
 
+@login_required
 def editbrand(request, id):
     category = Brand.objects.get(id = id)
     cate_form = EditProductCategoryForm()
@@ -101,6 +108,7 @@ def editbrand(request, id):
     
     return render(request, 'adminsite/edit-brand.html', context)
 
+@login_required
 def brand_detail(request, id):
     brand = Brand.objects.get(id = id)
     context = {
@@ -108,13 +116,14 @@ def brand_detail(request, id):
     }
     return render(request, 'adminsite/brand-detail.html', context)
 
+@login_required
 def deletebrand(request, id):
     prod_category = ProductCategory.objects.get(id = id)
     
     return redirect('brands')
 
 
-
+@login_required
 #
 def products(request):
     context = {
@@ -122,7 +131,7 @@ def products(request):
     }
     return render(request, 'adminsite/products.html', context)
 
-
+@login_required
 def product_detail(request, id):
     # product = Product.objects.get(id = id)
     # context = {
@@ -130,25 +139,31 @@ def product_detail(request, id):
     # }
     return render(request, 'adminsite/product-detail.html')
 
+@login_required
 def orders(request):
     context = {
         'orders': Order.objects.all()
     }
     return render(request, 'adminsite/orders.html', context)
 
+@login_required
 def order_detail(request, id):
     order = Order.objects.get(id = id)
+    order_items = order.items.all()
     context = {
-        'order' : order
+        'order' : order,
+        'order_items': order_items
     }
     return render(request, 'adminsite/order-detail.html', context)
 
+@login_required
 def requestsForServices(request):
     context = {
         'requests_s': RequestForService.objects.all()   
     }
     return render(request, 'adminsite/request-for-services.html', context)
 
+@login_required
 def requestsForServicesDetail(request, id):
     requestForService = RequestForService.objects.get(id = id)
     context = {
@@ -156,21 +171,25 @@ def requestsForServicesDetail(request, id):
     }
     return render(request, 'adminsite/request-for-services-detail.html', context)
 
+@login_required
 def requestsForQuotation(request):
     context = {
         'requests_for_quotation' : RequestForQuotation.objects.all()
     }
     return render(request, 'adminsite/request-for-quotation.html', context)
 
+@login_required
 def requestsForQuotationDetail(request, id):
     context = {
         'request_for_quote' : RequestForQuotation.objects.get(id = id)
     }
     return render(request, 'adminsite/request-for-quotation-detail.html', context)
 
+@login_required
 def profile(request):
     return render(request, 'adminsite/profile.html')
 
+@login_required
 def editprofile(request):
     return render(request, 'adminsite/edit-profile.html')
 
@@ -188,7 +207,7 @@ def product_images(request):
         'img_form' : img_form
     }
     return render(request, 'adminsite/addimages.html', context)
-
+@login_required
 def logoutpage(request):
     logout(request)
     return redirect('login')
