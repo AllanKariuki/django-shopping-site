@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from adminsite.models import Product, ProductCategory, Brand
-from .models import Order, OrderItem, CartItem
+from .models import Order, OrderItem, CartItem, Reviews
 from django.contrib.auth import authenticate, login, logout
 from .forms import RegisterForm, CartAddProductForm
 from django.contrib.auth.models import User
@@ -19,7 +19,21 @@ def blog(request):
     return render(request, 'clientsite/blog.html')
 
 def contact_us(request):
-    return render(request, 'clientsite/contact-us.html')
+    if request.method == 'POST':
+        name = request.POST.get('first_name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        message = request.POST.get('message')
+        
+        review = Reviews.objects.create(
+            name = name,
+            email = email,
+            phone = phone ,
+            message = message
+        )
+        review.save()
+    else:
+        return render(request, 'clientsite/contact-us.html')
 
 def about_us(request):
     return render(request, 'clientsite/about-us.html')

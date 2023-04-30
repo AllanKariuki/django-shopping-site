@@ -74,7 +74,7 @@ def category_detail(request, id):
 @login_required
 def deletecategory(request, id):
     prod_category = ProductCategory.objects.get(id = id)
-    
+    prod_category.delete()
     return redirect('productcategory')
 
 #Brands
@@ -134,8 +134,8 @@ def brand_detail(request, id):
 @admins_only
 @login_required
 def deletebrand(request, id):
-    prod_category = ProductCategory.objects.get(id = id)
-    
+    prod_brand = Brand.objects.get(id = id)
+    prod_brand.delete()
     return redirect('brands')
 
 
@@ -157,6 +157,11 @@ def product_detail(request, id):
     # }
     return render(request, 'adminsite/product-detail.html')
 
+def delete_product(request, id):
+    product = Product.objects.get(id = id)
+    product.delete()
+    return redirect('products')
+    
 @admins_only
 @login_required
 def orders(request):

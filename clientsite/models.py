@@ -54,3 +54,12 @@ class OrderItem(models.Model):
     def __str__(self):
         return f'{self.quantity} x {self.product.product_name} ({self.subtotal})'
     
+class Reviews(models.Model):
+    name = models.CharField(max_length= 100)
+    email = models.EmailField()
+    phone = models.IntegerField()
+    message = models.CharField(max_length= 200)
+    
+    def __str__(self):
+        return f'{self.message}'
+    
